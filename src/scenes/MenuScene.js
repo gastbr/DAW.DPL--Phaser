@@ -1,4 +1,5 @@
 import { Scene } from "phaser";
+import apiFetch from "../apiFetch";
 
 export class MenuScene extends Scene {
     constructor() {
@@ -7,6 +8,8 @@ export class MenuScene extends Scene {
 
     init() {
         this.cameras.main.fadeIn(1000, 0, 0, 0);
+        const data = apiFetch();
+        console.log(data);
     }
 
     create() {
@@ -46,7 +49,15 @@ export class MenuScene extends Scene {
             "CLICK TO START",
             24
         ).setOrigin(0.5, 0.5);
-        
+
+        const api_msg = this.add.bitmapText(
+            this.scale.width / 2,
+            this.scale.height - 50,
+            "pixelfont",
+            "API: ",
+            16
+        ).setOrigin(0.5, 0.5);
+
 
         // Tween to blink the text
         this.tweens.add({
