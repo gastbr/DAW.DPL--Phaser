@@ -8,8 +8,6 @@ export class MenuScene extends Scene {
 
     init() {
         this.cameras.main.fadeIn(1000, 0, 0, 0);
-        const data = apiFetch();
-        console.log(data);
     }
 
     create() {
@@ -50,14 +48,21 @@ export class MenuScene extends Scene {
             24
         ).setOrigin(0.5, 0.5);
 
-        const api_msg = this.add.bitmapText(
-            this.scale.width / 2,
-            this.scale.height - 50,
-            "pixelfont",
-            "API: ",
-            16
-        ).setOrigin(0.5, 0.5);
+        function hola() {
+            console.log('hola función');
+        }
 
+        apiFetch(hola)
+            .then(data => {
+                console.log(data);
+                const api_msg = this.add.bitmapText(
+                    this.scale.width / 2,
+                    this.scale.height - 50,
+                    "pixelfont",
+                    `ID: ${data.bicicletas[0].id} - COLOR: ${data.bicicletas[0].color} - MODEL: ${data.bicicletas[0].modelo}`,
+                    16
+                ).setOrigin(0.5, 0.5);
+            });
 
         // Tween to blink the text
         this.tweens.add({
