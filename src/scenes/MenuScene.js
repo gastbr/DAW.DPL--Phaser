@@ -52,14 +52,27 @@ export class MenuScene extends Scene {
             console.log('hola función');
         }
 
+        const api_load_msg = this.add.bitmapText(
+            this.scale.width / 2,
+            this.scale.height - 50,
+            "pixelfont",
+            `Cargando datos de API...`,
+            16
+        ).setOrigin(0.5, 0.5);
+
         apiFetch(hola)
             .then(data => {
                 console.log(data);
+                api_load_msg.destroy();
                 const api_msg = this.add.bitmapText(
                     this.scale.width / 2,
                     this.scale.height - 50,
                     "pixelfont",
-                    `ID: ${data.bicicletas[0].id} - COLOR: ${data.bicicletas[0].color} - MODEL: ${data.bicicletas[0].modelo}`,
+                    `
+                    ID: ${data.bicicletas[0].id} - COLOR: ${data.bicicletas[0].color} - MODEL: ${data.bicicletas[0].modelo}
+                    ID: ${data.bicicletas[1].id} - COLOR: ${data.bicicletas[1].color} - MODEL: ${data.bicicletas[1].modelo}
+                    ID: ${data.bicicletas[2].id} - COLOR: ${data.bicicletas[2].color} - MODEL: ${data.bicicletas[2].modelo}
+                    `,
                     16
                 ).setOrigin(0.5, 0.5);
             });
