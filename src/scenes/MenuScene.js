@@ -1,5 +1,6 @@
 import { Scene } from "phaser";
 import apiFetch from "../apiFetch";
+import { Bugfender } from '@bugfender/sdk';
 
 export class MenuScene extends Scene {
     constructor() {
@@ -62,7 +63,6 @@ export class MenuScene extends Scene {
 
         apiFetch(hola)
             .then(data => {
-                console.log(data);
                 api_load_msg.destroy();
                 const api_msg = this.add.bitmapText(
                     this.scale.width / 2,
@@ -90,6 +90,7 @@ export class MenuScene extends Scene {
         // Send start-game event when user clicks
         this.input.on("pointerdown", () => {
             this.game.events.emit("start-game");
+            Bugfender.info('Game started');
         });
     }
 }

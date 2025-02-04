@@ -5,6 +5,19 @@ import { HudScene } from "./scenes/HudScene";
 import { MainScene } from "./scenes/MainScene";
 import { MenuScene } from "./scenes/MenuScene";
 import { SplashScene } from "./scenes/SplashScene";
+import { Bugfender } from '@bugfender/sdk';
+Bugfender.init({
+    appKey: 'CjJ1YO5IDNumWASFXX0k6LfbUePnNu3A',
+    // overrideConsoleMethods: true,
+    // printToConsole: true,
+    // registerErrorHandler: true,
+    // logBrowserEvents: true,
+    // logUIEvents: true,
+    // version: '',
+    // build: '',
+});
+
+Bugfender.info('Game loaded');
 
 // More information about config: https://newdocs.phaser.io/docs/3.70.0/Phaser.Types.Core.GameConfig
 const config = {
