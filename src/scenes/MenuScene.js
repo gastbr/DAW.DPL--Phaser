@@ -45,7 +45,7 @@ export class MenuScene extends Scene {
             this.scale.width / 2,
             this.scale.height / 2 + 85,
             "pixelfont",
-            "CLICK TO START",
+            "PRESS ANY KEY TO START",
             24
         ).setOrigin(0.5, 0.5);
 
@@ -87,10 +87,23 @@ export class MenuScene extends Scene {
             repeat: -1
         });
 
-        // Send start-game event when user clicks
-        this.input.on("pointerdown", () => {
+        // Send start-game event when user presses any button
+        this.input.keyboard.on("keydown", () => {
             this.game.events.emit("start-game");
             Bugfender.info('Game started');
+        });
+
+        // Send error event when user clicks
+        this.input.on("pointerdown", () => {
+            try {
+                console.log('error ok');
+                this.game.events.emit("load-error");
+            } catch (error) {
+                Bugfender.error(error);
+                Bugfender.info('error loaded');
+                console.error(error);
+                console.info('error loaded');
+            }
         });
     }
 }

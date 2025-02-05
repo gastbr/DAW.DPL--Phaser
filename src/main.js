@@ -8,10 +8,10 @@ import { SplashScene } from "./scenes/SplashScene";
 import { Bugfender } from '@bugfender/sdk';
 Bugfender.init({
     appKey: 'CjJ1YO5IDNumWASFXX0k6LfbUePnNu3A',
-    // overrideConsoleMethods: true,
+    overrideConsoleMethods: false,
     // printToConsole: true,
     // registerErrorHandler: true,
-    // logBrowserEvents: true,
+    logBrowserEvents: false,
     // logUIEvents: true,
     // version: '',
     // build: '',

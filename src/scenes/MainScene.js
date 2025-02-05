@@ -1,6 +1,7 @@
 import { Scene } from "phaser";
 import { Player } from "../gameobjects/Player";
 import { BlueEnemy } from "../gameobjects/BlueEnemy";
+import apiFetch from "../apiFetch";
 
 export class MainScene extends Scene {
     player = null;
@@ -61,6 +62,11 @@ export class MainScene extends Scene {
             this.points -= 10;
             this.scene.get("HudScene")
                 .update_points(this.points);
+        });
+
+        // Trigger type error
+        this.game.events.on("load-error", () => {
+            this.game.load.image("logo", "logo.png");
         });
 
         // This event comes from MenuScene
